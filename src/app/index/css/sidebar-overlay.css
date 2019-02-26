@@ -1,0 +1,81 @@
+/* * {
+  box-sizing: border-box;
+} */
+
+.sidebar-overlay {
+  background: rgba(8, 8, 8, 0.6);
+  height: 100%;
+  left: -100%;
+  position: fixed;
+  width: 100%;
+  z-index: 4;
+}
+nav.sidebar {
+  background: #000;
+  color: #fff;
+  height: 100%;
+  left: -50%;
+  margin: 43px 0 0 0;
+  padding: 20px 20px;
+  position: fixed;
+  width: 50%;
+  z-index: 6;
+  -webkit-transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  -moz-transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+nav.sidebar .sidebar__btn-close {
+  cursor: pointer;
+  text-align: right;
+  margin-bottom: 20px;
+}
+nav.sidebar > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav.sidebar > ul > li {
+  padding: 20px 0;
+}
+
+nav.sidebar > ul > li > a {
+  font-size: 1.6em;
+}
+/* .container {
+  background: orange;
+  height: 100%;
+  padding: 15px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+} */
+.btn-menu {
+  background: black;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+  position: fixed;
+  z-index: 3;
+  -webkit-animation: fadein 2s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s;
+  /* Firefox < 16 */
+  -ms-animation: fadein 2s;
+  /* Internet Explorer */
+  -o-animation: fadein 2s;
+  /* Opera < 12.1 */
+  animation: fadein 2s;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

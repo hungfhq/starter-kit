@@ -10,10 +10,15 @@ export const environment = {
   version: env.npm_package_version + '-dev',
   serverUrl: '/api',
   defaultLanguage: 'en-US',
-  supportedLanguages: [
-    'en-US',
-    'fr-FR'
-  ]
+  supportedLanguages: ['en-US', 'fr-FR'],
+  firebase: {
+    apiKey: 'AIzaSyAYJO8qsQ3fmEF1OkvHvezuc3UFb3eg0Jo',
+    authDomain: 'products-db-5ceac.firebaseapp.com',
+    databaseURL: 'https://products-db-5ceac.firebaseio.com',
+    projectId: 'products-db-5ceac',
+    storageBucket: 'products-db-5ceac.appspot.com',
+    messagingSenderId: '399906139362'
+  }
 };
 
 /*
