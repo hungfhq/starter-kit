@@ -11,7 +11,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
+    <div id="navbar-menu" class="collapse navbar-inverse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
       <div class="navbar-nav">
         <a class="nav-item nav-link text-uppercase" routerLink="/home" routerLinkActive="active">
           <i class="fas fa-home"></i>
@@ -20,10 +20,6 @@
         <a class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="active">
           <i class="fas fa-question-circle"></i>
           <span translate>About</span>
-        </a>
-        <a class="nav-item nav-link text-uppercase" routerLink="/index" routerLinkActive="active">
-          <i class="fas fa-check-circle"></i>
-          <span translate>Index</span>
         </a>
       </div>
       <div class="navbar-nav ml-auto">

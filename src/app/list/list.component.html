@@ -1,0 +1,12 @@
+<h4 class="text-center text-black-50 py-2">Products of a category</h4>
+<div class="row">
+  <div class="col-6" *ngFor="let products of (getProducts().brand | keyvalue)">
+    <div class="border my-2 p-2" *ngFor="let product of (products.value.products | keyvalue)">
+      <a [routerLink]="['/shop', link, products.value.link, product.value.link]">
+        <h6 class="text-success text-center">{{ product.value.name }}</h6>
+      </a>
+      <img class="img-fluid" src="{{ product.value.img_url }}" />
+      <p>{{ product.value.dsc }}</p>
+    </div>
+  </div>
+</div>
