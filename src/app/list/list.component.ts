@@ -10,11 +10,10 @@ import { GetDataService } from '../get-data.service';
 export class ListComponent implements OnInit {
   public link: any;
 
-  constructor(private route: ActivatedRoute, public service: GetDataService) {}
+  constructor(private route: ActivatedRoute, private service: GetDataService) {}
 
   ngOnInit() {
     // console.log(this.getProducts());
-    // this.link =  this.route.snapshot.paramMap.get('category');
     this.route.paramMap.subscribe(para => {
       this.link = para.get('category');
     });

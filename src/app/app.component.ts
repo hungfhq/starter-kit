@@ -8,6 +8,8 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { Logger, I18nService } from '@app/core';
 
+import { GetDataService } from './get-data.service';
+
 const log = new Logger('App');
 
 @Component({
@@ -21,7 +23,8 @@ export class AppComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
     private translateService: TranslateService,
-    private i18nService: I18nService
+    private i18nService: I18nService,
+    private service: GetDataService
   ) {}
 
   ngOnInit() {
