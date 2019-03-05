@@ -6,8 +6,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShopRoutingModule } from './shop-routing.module';
 import { ShopComponent } from './shop.component';
 
+import { ReplaceStringPipe } from '../replace-string.pipe';
+
 @NgModule({
   imports: [CommonModule, TranslateModule, ShopRoutingModule, NgbModule],
-  declarations: [ShopComponent]
+  declarations: [ShopComponent, ReplaceStringPipe]
 })
 export class ShopModule {}

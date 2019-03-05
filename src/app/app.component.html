@@ -88,9 +88,10 @@
         <h4><i class="fas fa-bars hidden-xs"></i> Categories</h4>
       </div>
       <div class="header">
+        <!-- show categories from data -->
         <ul>
-          <li class="cat-item" *ngFor="let category of service.getData()">
-            <a [routerLink]="['/shop', category.link]">{{ category.name }}</a>
+          <li class="cat-item" *ngFor="let category of service.getData().categories">
+            <a [routerLink]="['/shop', category.link]">{{ category.link | titlecase }}s</a>
           </li>
         </ul>
       </div>
