@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { GetDataService } from '../get-data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CustomService } from '../custom.service';
 
 @Component({
   selector: 'app-list',
@@ -8,13 +8,22 @@ import { GetDataService } from '../get-data.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  public link: any;
+  categoryLink: any;
+  found: any;
 
-  constructor(private route: ActivatedRoute, public service: GetDataService) {}
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, public service: CustomService) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(para => {
-      this.link = para.get('category');
+    this.activatedRoute.paramMap.subscribe(para => {
+      this.categoryLink = para.get('category');
+      this.found = this.service
+        .getData()
+        .categories.find((data: { link: any }) => this.categoryLink.includes(data.link));
+      // if(this.found.hasOwnProperty('link'))
+      //   this.router.navigate(['/shop', this.found.link])
+      // else
+      //   this.router.navigate(['/shop'])
     });
+    !this.found ? this.router.navigate(['/shop']) : this.router.navigate(['/shop', this.found.link]);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { GetDataService } from '../get-data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CustomService } from '../custom.service';
 
 import { Logger } from 'app/core/logger.service';
 
@@ -13,17 +13,28 @@ const log = new Logger('DetailComponent');
 })
 export class DetailComponent implements OnInit {
   private link: any;
+  private found: any;
+  private category: any;
+  private brand: any;
 
-  constructor(private route: ActivatedRoute, public service: GetDataService) {}
+  constructor(private route: ActivatedRoute, private router: Router, public service: CustomService) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(para => {
+      this.category = para.get('category');
+      this.brand = para.get('brand');
       this.link = para.get('link');
     });
-    console.log(this.service.getProductByLink(this.link));
-  }
-
-  getProduct() {
-    return this.service.getProductByLink(this.link);
+    console.log(
+      this.service.isCategoryExisted(this.category),
+      this.service.isBrandExisted(this.brand),
+      this.service.isLinkExisted(this.link)
+    );
+    this.found = this.service.getData().products.find((data: { link: any }) => this.link.includes(data.link));
+    this.service.isCategoryExisted(this.category) &&
+    this.service.isBrandExisted(this.brand) &&
+    this.service.isLinkExisted(this.link)
+      ? this.router.navigate(['/shop', this.found.clink, this.found.blink, this.found.link])
+      : this.router.navigate(['/shop']);
   }
 }

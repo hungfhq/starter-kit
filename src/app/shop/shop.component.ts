@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetDataService } from '../get-data.service';
+import { CustomService } from '../custom.service';
 
 @Component({
   selector: 'app-shop',
@@ -7,7 +7,7 @@ import { GetDataService } from '../get-data.service';
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
-  constructor(public service: GetDataService) {}
+  constructor(public service: CustomService) {}
 
   ngOnInit() {}
 }

@@ -13,14 +13,7 @@
 <div class="row p-2">
   <div class="col-6 p-2" *ngFor="let product of service.getData().products">
     <div class="border p-2 my-2">
-      <a
-        [routerLink]="[
-          '/shop',
-          service.getCategoryLinkById(product.cid),
-          service.getBrandLinkById(product.bid),
-          product.link
-        ]"
-      >
+      <a [routerLink]="['/shop', product.clink, product.blink, product.link]">
         <h6 class="text-success text-center">{{ product.link | replaceStringPipe: '-':' ' | titlecase }}</h6>
       </a>
       <img class="img-fluid" src="{{ product.img_url }}" />

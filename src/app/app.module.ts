@@ -19,6 +19,7 @@ import { ShopModule } from './shop/shop.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DetailModule } from './detail/detail.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,7 @@ import { DetailModule } from './detail/detail.module';
 
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, PageNotFoundComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
