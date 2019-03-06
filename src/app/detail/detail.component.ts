@@ -12,10 +12,10 @@ const log = new Logger('DetailComponent');
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  private link: any;
-  private found: any;
-  private category: any;
-  private brand: any;
+  link: any;
+  found: any;
+  category: any;
+  brand: any;
 
   constructor(private route: ActivatedRoute, private router: Router, public service: CustomService) {}
 
@@ -35,6 +35,6 @@ export class DetailComponent implements OnInit {
     this.service.isBrandExisted(this.brand) &&
     this.service.isLinkExisted(this.link)
       ? this.router.navigate(['/shop', this.found.clink, this.found.blink, this.found.link])
-      : this.router.navigate(['/shop']);
+      : this.router.navigate(['/pagenotfound']);
   }
 }

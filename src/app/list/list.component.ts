@@ -24,6 +24,6 @@ export class ListComponent implements OnInit {
       // else
       //   this.router.navigate(['/shop'])
     });
-    !this.found ? this.router.navigate(['/shop']) : this.router.navigate(['/shop', this.found.link]);
+    !this.found ? this.router.navigate(['/pagenotfound']) : this.router.navigate(['/shop', this.found.link]);
   }
 }
