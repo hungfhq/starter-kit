@@ -1,14 +1,32 @@
-<h4 class="text-center text-black-50 py-2">Product detail</h4>
+<h4 class="text-center text-black-50 py-2 my-2 header">Product detail</h4>
 <div>
   <div class="border my-2 p-2">
     <h5 class="text-success text-center">
       {{ this.service.getProductByLink(link)?.link | replaceStringPipe: '-':' ' | titlecase }}
     </h5>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 p-5">
         <img class="img-fluid" src="{{ this.service.getProductByLink(link)?.img_url }}" />
+        <h5 class="text-success text-center">Price: {{ this.service.getProductByLink(link)?.price }}</h5>
+        <div class="circle-list">
+          <span class="circle" data-toggle="tooltip" title="Add to cart"> <i class="fa fa-shopping-cart"></i></span>
+          <span
+            [class]="isActive ? 'circle-active' : 'circle'"
+            data-toggle="tooltip"
+            title="Add to wishlist"
+            (click)="isActive = !isActive"
+          >
+            <i class="far fa-heart"></i>
+          </span>
+          <span class="circle" data-toggle="tooltip" title="Compare this product">
+            <i class="fas fa-paperclip"></i>
+          </span>
+          <span class="circle" data-toggle="tooltip" title="Quick view">
+            <i class="far fa-check-circle"></i>
+          </span>
+        </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 p-5">
         <h6>{{ this.service.getProductByLink(link)?.dsc }}</h6>
         <p>{{ this.service.getProductByLink(link)?.full_dsc }}</p>
       </div>

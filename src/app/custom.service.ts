@@ -28,6 +28,10 @@ export class CustomService {
     return found;
   };
 
+  getProductById(productId?: string) {
+    return this.getData().products.find((x: { id: string }) => x.id === productId);
+  }
+
   contain = (searchStr: string, str: string) => {
     return new RegExp(searchStr).test(str);
   };

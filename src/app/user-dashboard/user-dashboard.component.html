@@ -70,9 +70,7 @@
           <div id="navbar-menu" class="collapse navbar-inverse navbar-collapse float-xs-none">
             <div class="navbar-nav">
               <a class="nav-item nav-link ml-2"> <i class="fa fa-home"></i> Home </a>
-              <a class="nav-item nav-link ml-2" [routerLink]="['/user-dashboard']">
-                <i class="fa fa-star"></i> Wish List
-              </a>
+              <a class="nav-item nav-link ml-2"> <i class="fa fa-star"></i> Wish List </a>
               <a class="nav-item nav-link ml-2"> <i class="fa fa-shopping-cart"></i> Shopping Cart </a>
               <a class="nav-item nav-link ml-2"> <i class="fa fa-check-square"></i> Checkout </a>
               <div class="nav-item" ngbDropdown placement="bottom-right">
@@ -80,14 +78,12 @@
                   <i class="fa fa-address-book"></i> My Account
                 </a>
                 <div ngbDropdownMenu aria-labelledby="wl-dropdown">
-                  <a [routerLink]="['/login']">
-                    <h6 class="dropdown-header">
-                      Log in page
-                    </h6>
-                  </a>
+                  <h6 class="dropdown-header">
+                    <span>Logged in as</span> <b>{{ username }}</b>
+                  </h6>
                   <div class="dropdown-divider"></div>
-                  <!-- <button class="dropdown-item">Login pop up</button> -->
-                  <ngbd-login-modal></ngbd-login-modal>
+                  <!-- <button class="dropdown-item" (click)="logout()">Logout</button> -->
+                  <a href="/shop" class="dropdown-item" (click)="logout()">Logout</a>
                 </div>
               </div>
             </div>
@@ -97,48 +93,45 @@
     </div>
   </div>
 </header>
-
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
       <div class="box-heading">
-        <h4><i class="fas fa-bars hidden-xs"></i> Categories</h4>
+        <h4><i class="fas fa-bars hidden-xs"></i> Dashboard</h4>
       </div>
-      <div class="header">
-        <!-- show categories from data -->
-        <ul>
-          <li class="cat-item" *ngFor="let category of service.getData().categories">
-            <a [routerLink]="['/shop', category.link]">{{ category.link | titlecase }}s</a>
-          </li>
-        </ul>
-      </div>
+
       <!-- Account menu-left -->
       <div class="hidden-xs">
         <div class="header heading-left-menu">
-          <p>Account</p>
+          <p>Hello {{ username }}</p>
         </div>
         <div class="header">
           <ul>
             <li class="cat-item">
-              <a href=""><i class="fas fa-angle-right"></i>Login</a>
-            </li>
-            <li class="cat-item">
-              <a href=""><i class="fas fa-angle-right"></i>Register</a>
-            </li>
-            <li class="cat-item">
-              <a href=""><i class="fas fa-angle-right"></i>Forgotten Password</a>
-            </li>
-            <li class="cat-item">
-              <a href=""><i class="fas fa-angle-right"></i>My Account</a>
+              <a href=""><i class="fas fa-angle-right"></i>My Profile</a>
             </li>
             <li class="cat-item">
               <a href=""><i class="fas fa-angle-right"></i>Address Book</a>
             </li>
             <li class="cat-item">
-              <a [routerLink]="['/user-dashboard']"><i class="fas fa-angle-right"></i>Wish List</a>
+              <a href=""><i class="fas fa-angle-right"></i>My Payment Options</a>
             </li>
             <li class="cat-item">
-              <a href=""><i class="fas fa-angle-right"></i>Order History</a>
+              <a href=""><i class="fas fa-angle-right"></i>Vouchers</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="header heading-left-menu">
+          <p>My Orders</p>
+        </div>
+        <div class="header">
+          <ul>
+            <li class="cat-item">
+              <a href=""><i class="fas fa-angle-right"></i>My Returns</a>
+            </li>
+            <li class="cat-item">
+              <a href=""><i class="fas fa-angle-right"></i>My Cancellations</a>
             </li>
           </ul>
         </div>
@@ -146,7 +139,7 @@
     </div>
 
     <div class="col-sm-9">
-      <!-- main-contain -->
+      <!-- main-contain  -->
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -3,13 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { extract } from '@app/core';
 import { DetailComponent } from './detail.component';
+import { Shop } from '@app/shop/shop.service';
 
 const routes: Routes = [
-  {
-    path: 'shop/:category/:brand/:link',
-    component: DetailComponent,
-    data: { title: extract('Detail...') }
-  }
+  Shop.childRoutes([
+    {
+      path: ':category/:brand/:link',
+      component: DetailComponent,
+      data: { title: extract('Detail...') }
+    }
+  ])
 ];
 
 @NgModule({

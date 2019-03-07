@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { extract } from '@app/core';
-import { Shell } from '@app/shell/shell.service';
-import { HomeComponent } from './home.component';
+
+import { UserDashboardComponent } from './user-dashboard.component';
 
 const routes: Routes = [
-  Shell.childRoutes([{ path: 'home', component: HomeComponent, data: { title: extract('Home') } }])
+  { path: 'user-dashboard', component: UserDashboardComponent, data: { title: extract('User Dashboard') } }
 ];
 
 @NgModule({
@@ -14,4 +13,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class HomeRoutingModule {}
+export class UserDashboardRoutingModule {}

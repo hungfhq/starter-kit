@@ -16,6 +16,7 @@ export class DetailComponent implements OnInit {
   found: any;
   category: any;
   brand: any;
+  isActive: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router, public service: CustomService) {}
 

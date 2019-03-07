@@ -13,13 +13,12 @@ import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 import { AboutModule } from './about/about.module';
 import { LoginModule } from './login/login.module';
-import { ListModule } from './list/list.module';
 import { ShopModule } from './shop/shop.module';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DetailModule } from './detail/detail.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
 
 @NgModule({
   imports: [
@@ -36,9 +35,8 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
     HomeModule,
     AboutModule,
     LoginModule,
-    ListModule,
-    DetailModule,
     PageNotFoundModule,
+    UserDashboardModule,
 
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
