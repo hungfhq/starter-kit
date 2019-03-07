@@ -18,7 +18,6 @@ import { ShopModule } from './shop/shop.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
-import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
 
 @NgModule({
   imports: [
@@ -36,7 +35,6 @@ import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
     AboutModule,
     LoginModule,
     PageNotFoundModule,
-    UserDashboardModule,
 
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],

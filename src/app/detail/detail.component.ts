@@ -32,10 +32,10 @@ export class DetailComponent implements OnInit {
       this.service.isLinkExisted(this.link)
     );
     this.found = this.service.getData().products.find((data: { link: any }) => this.link.includes(data.link));
-    this.service.isCategoryExisted(this.category) &&
-    this.service.isBrandExisted(this.brand) &&
-    this.service.isLinkExisted(this.link)
-      ? this.router.navigate(['/shop', this.found.clink, this.found.blink, this.found.link])
-      : this.router.navigate(['/pagenotfound']);
+    // this.service.isCategoryExisted(this.category) &&
+    // this.service.isBrandExisted(this.brand) &&
+    // this.service.isLinkExisted(this.link)
+    //   ? this.router.navigate(['/shop', this.found.clink, this.found.blink, this.found.link])
+    //   : this.router.navigate(['/pagenotfound']);
   }
 }

@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { extract } from '@app/core';
 
-import { UserDashboardComponent } from './user-dashboard.component';
+import { WishListComponent } from './wishlist.component';
 
 const routes: Routes = [
-  { path: 'user-dashboard', component: UserDashboardComponent, data: { title: extract('User Dashboard') } }
+  {
+    path: 'wishlist',
+    component: WishListComponent,
+    data: { title: extract('Wishlist') }
+  }
 ];
 
 @NgModule({
@@ -13,4 +17,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class UserDashboardRoutingModule {}
+export class WishListRoutingModule {}

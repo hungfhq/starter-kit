@@ -69,27 +69,10 @@
           </button>
           <div id="navbar-menu" class="collapse navbar-inverse navbar-collapse float-xs-none">
             <div class="navbar-nav">
-              <a class="nav-item nav-link ml-2"> <i class="fa fa-home"></i> Home </a>
-              <a class="nav-item nav-link ml-2" [routerLink]="['/user-dashboard']">
-                <i class="fa fa-star"></i> Wish List
-              </a>
+              <a class="nav-item nav-link ml-2" [routerLink]="['/shop']"> <i class="fa fa-home"></i> Home </a>
+              <a class="nav-item nav-link ml-2" [routerLink]="['/wishlist']"> <i class="fa fa-star"></i> Wish List </a>
               <a class="nav-item nav-link ml-2"> <i class="fa fa-shopping-cart"></i> Shopping Cart </a>
               <a class="nav-item nav-link ml-2"> <i class="fa fa-check-square"></i> Checkout </a>
-              <div class="nav-item" ngbDropdown placement="bottom-right">
-                <a id="wl-dropdown" class="nav-link" ngbDropdownToggle>
-                  <i class="fa fa-address-book"></i> My Account
-                </a>
-                <div ngbDropdownMenu aria-labelledby="wl-dropdown">
-                  <a [routerLink]="['/login']">
-                    <h6 class="dropdown-header">
-                      Log in page
-                    </h6>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <!-- <button class="dropdown-item">Login pop up</button> -->
-                  <ngbd-login-modal></ngbd-login-modal>
-                </div>
-              </div>
             </div>
           </div>
         </nav>
@@ -120,22 +103,19 @@
         <div class="header">
           <ul>
             <li class="cat-item">
-              <a href=""><i class="fas fa-angle-right"></i>Login</a>
+              <a [routerLink]="['/login']"><i class="fas fa-angle-right"></i>Login</a>
             </li>
             <li class="cat-item">
-              <a href=""><i class="fas fa-angle-right"></i>Register</a>
-            </li>
-            <li class="cat-item">
-              <a href=""><i class="fas fa-angle-right"></i>Forgotten Password</a>
+              <a>
+                <i class="fas fa-angle-right"></i>
+                <ngbd-login-modal></ngbd-login-modal>
+              </a>
             </li>
             <li class="cat-item">
               <a href=""><i class="fas fa-angle-right"></i>My Account</a>
             </li>
             <li class="cat-item">
               <a href=""><i class="fas fa-angle-right"></i>Address Book</a>
-            </li>
-            <li class="cat-item">
-              <a [routerLink]="['/user-dashboard']"><i class="fas fa-angle-right"></i>Wish List</a>
             </li>
             <li class="cat-item">
               <a href=""><i class="fas fa-angle-right"></i>Order History</a>

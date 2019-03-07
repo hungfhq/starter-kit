@@ -69,7 +69,7 @@
           </button>
           <div id="navbar-menu" class="collapse navbar-inverse navbar-collapse float-xs-none">
             <div class="navbar-nav">
-              <a class="nav-item nav-link ml-2"> <i class="fa fa-home"></i> Home </a>
+              <a class="nav-item nav-link ml-2" [routerLink]="['/shop']"> <i class="fa fa-home"></i> Home </a>
               <a class="nav-item nav-link ml-2"> <i class="fa fa-star"></i> Wish List </a>
               <a class="nav-item nav-link ml-2"> <i class="fa fa-shopping-cart"></i> Shopping Cart </a>
               <a class="nav-item nav-link ml-2"> <i class="fa fa-check-square"></i> Checkout </a>
@@ -83,7 +83,7 @@
                   </h6>
                   <div class="dropdown-divider"></div>
                   <!-- <button class="dropdown-item" (click)="logout()">Logout</button> -->
-                  <a href="/shop" class="dropdown-item" (click)="logout()">Logout</a>
+                  <a href="" class="dropdown-item" (click)="logout()">Logout</a>
                 </div>
               </div>
             </div>
@@ -140,7 +140,25 @@
 
     <div class="col-sm-9">
       <!-- main-contain  -->
-      <router-outlet></router-outlet>
+      <div class="p-4">
+        <div class="row border-bottom my-2 p-2" *ngFor="let product of this.service.getData().products">
+          <div class="col-2">
+            <img class="img-fluid" src="{{ product.img_url }}" />
+          </div>
+          <div class="col-5">
+            <a class="text-danger" [routerLink]="['/shop', product.clink, product.blink, product.link]">{{
+              product.link
+            }}</a>
+            <p>{{ product.dsc }}</p>
+          </div>
+          <div class="col-2">
+            <h6 class="text-center text-success">{{ product.price }}</h6>
+          </div>
+          <div class="col-3 align-middle">
+            <button class="btn btn-primary">Add to cart</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!-- end main-row -->

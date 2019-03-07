@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '@app/core';
+import { CustomService } from '@app/custom.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '@app/core';
 
 @Component({
-  selector: 'app-user-dashboard',
-  templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.scss']
+  selector: 'app-wishlist',
+  templateUrl: './wishlist.component.html',
+  styleUrls: ['./wishlist.component.scss']
 })
-export class UserDashboardComponent implements OnInit {
-  constructor(private authenticationService: AuthenticationService, private router: Router) {}
+export class WishListComponent implements OnInit {
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    public service: CustomService
+  ) {}
 
   ngOnInit() {}
   get username(): string | null {
