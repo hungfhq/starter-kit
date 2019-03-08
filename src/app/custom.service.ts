@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import * as data from '../db.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomService {
-  constructor(private router: Router) {}
-
+  getWishlist: any;
+  constructor() {
+    this.getWishlist = this.getData().wishlist.map(s => this.getData().products.find(x => x.id == s.id));
+  }
+  // get data from db file
   getData() {
     return data.default;
   }
 
+  // get products by category
   getProductsByCatLink = (categoryLink: string) => {
     let products: Array<any> = [];
     this.getData().products.forEach((product: { clink: string }) => {
@@ -28,13 +31,27 @@ export class CustomService {
     return found;
   };
 
-  getProductById(productId?: string) {
-    return this.getData().products.find((x: { id: string }) => x.id === productId);
+  addItemToWishlist(product: any) {
+    this.getWishlist.push(product);
   }
 
-  contain = (searchStr: string, str: string) => {
-    return new RegExp(searchStr).test(str);
-  };
+  removeItemOutOfWishlist(productId: string) {
+    this.getWishlist.splice(this.getWishlist.indexOf(productId), 1);
+  }
+
+  isExistedInWishlist(productId: string) {
+    return this.getWishlist.find(x => x.id === productId) ? true : false;
+  }
+
+  getProductById(productId?: string) {
+    return this.getData()
+      .products.map(p => p)
+      .find((x: { id: string }) => x.id === productId);
+  }
+
+  // contain = (searchStr: string, str: string) => {
+  //   return new RegExp(searchStr).test(str);
+  // };
 
   isLinkExisted = (link?: string) => {
     let existed;

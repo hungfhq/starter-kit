@@ -28,7 +28,7 @@
   width: 100%;
 }
 
-// Circle list icon
+//  Circle list icon
 .circle {
   height: 38px;
   width: 38px;
@@ -49,5 +49,20 @@
   }
   i {
     color: #c2c2c2;
+  }
+}
+
+.circle-active {
+  height: 38px;
+  width: 38px;
+  background-color: #19caaf;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 10px;
+  margin-right: 6px;
+  margin-top: 20px;
+  font-size: 1.5em;
+  i {
+    color: #fff;
   }
 }

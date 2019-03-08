@@ -13,10 +13,9 @@ const log = new Logger('DetailComponent');
 })
 export class DetailComponent implements OnInit {
   link: any;
-  found: any;
+  foundProduct: any;
   category: any;
   brand: any;
-  isActive: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router, public service: CustomService) {}
 
@@ -26,16 +25,23 @@ export class DetailComponent implements OnInit {
       this.brand = para.get('brand');
       this.link = para.get('link');
     });
-    console.log(
-      this.service.isCategoryExisted(this.category),
-      this.service.isBrandExisted(this.brand),
-      this.service.isLinkExisted(this.link)
-    );
-    this.found = this.service.getData().products.find((data: { link: any }) => this.link.includes(data.link));
+
+    this.foundProduct = this.service.getData().products.find((data: { link: any }) => this.link.includes(data.link));
     this.service.isCategoryExisted(this.category) &&
     this.service.isBrandExisted(this.brand) &&
     this.service.isLinkExisted(this.link)
-      ? this.router.navigate(['/shop', this.found.clink, this.found.blink, this.found.link])
+      ? this.router.navigate(['/shop', this.foundProduct.clink, this.foundProduct.blink, this.foundProduct.link])
       : this.router.navigate(['/pagenotfound']);
+    // console.log("id 1", this.service.isExistedInWishlist("1"));
+    // console.log("id 4", this.service.isExistedInWishlist("4"));
+    // console.log("id 6", this.service.isExistedInWishlist("6"));
+    // console.log("check existed or not on ngOnInit", this.service.isExistedInWishlist(this.foundProduct.id));
+  }
+
+  toggleWishlistButton() {
+    // console.log("check existed or not on toggleWishlistButton",this.service.isExistedInWishlist(this.foundProduct.id));
+    if (this.service.isExistedInWishlist(this.foundProduct.id))
+      this.service.removeItemOutOfWishlist(this.foundProduct.id);
+    else this.service.addItemToWishlist(this.foundProduct);
   }
 }

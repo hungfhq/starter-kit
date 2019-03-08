@@ -7,8 +7,6 @@ import { CustomService } from '@app/custom.service';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-  public isActive: true;
-
   constructor(public service: CustomService) {}
 
   ngOnInit() {}

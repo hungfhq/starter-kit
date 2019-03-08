@@ -70,7 +70,10 @@
           <div id="navbar-menu" class="collapse navbar-inverse navbar-collapse float-xs-none">
             <div class="navbar-nav">
               <a class="nav-item nav-link ml-2" [routerLink]="['/shop']"> <i class="fa fa-home"></i> Home </a>
-              <a class="nav-item nav-link ml-2"> <i class="fa fa-star"></i> Wish List </a>
+              <a class="nav-item nav-link ml-2">
+                <i class="fa fa-star"></i> Wish List
+                <span class="text-success">({{ service.getWishlist.length }})</span></a
+              >
               <a class="nav-item nav-link ml-2"> <i class="fa fa-shopping-cart"></i> Shopping Cart </a>
               <a class="nav-item nav-link ml-2"> <i class="fa fa-check-square"></i> Checkout </a>
               <div class="nav-item" ngbDropdown placement="bottom-right">
@@ -79,7 +82,7 @@
                 </a>
                 <div ngbDropdownMenu aria-labelledby="wl-dropdown">
                   <h6 class="dropdown-header">
-                    <span>Logged in as</span> <b>{{ username }}</b>
+                    <span>Logged in as</span> <span class="text-danger">{{ username }}</span>
                   </h6>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" (click)="logout()">Logout</a>
@@ -142,22 +145,24 @@
     <div class="col-sm-9">
       <!-- main-contain  -->
       <div class="p-4">
-        <div class="row border-bottom my-2 p-2" *ngFor="let product of this.service.getData().products">
+        <div class="row border-bottom my-2 p-2" *ngFor="let product of service.getWishlist">
           <div class="col-2">
-            <img class="img-fluid" src="{{ product.img_url }}" />
+            <img class="img-fluid" src="{{ product?.img_url }}" />
           </div>
           <div class="col-5">
-            <a class="text-danger" [routerLink]="['/shop', product.clink, product.blink, product.link]">{{
-              product.link
+            <a class="text-danger" [routerLink]="['/shop', product?.clink, product?.blink, product?.link]">{{
+              product?.link
             }}</a>
-            <p>{{ product.dsc }}</p>
-            <a><i class="fa fa-trash fa-2x"></i></a>
+            <p>{{ product?.dsc }}</p>
+            <a (click)="this.service.removeItemOutOfWishlist(product.id)"><i class="fa fa-trash fa-2x"></i></a>
           </div>
-          <div class="col-2">
-            <h6 class="text-center text-success">{{ product.price }}</h6>
+          <div class="col-2 py-3">
+            <h6 class="text-center text-success">{{ product?.price }}</h6>
           </div>
-          <div class="col-3 align-middle">
-            <button class="btn btn-primary">Add to cart</button>
+          <div class="col-3 py-3">
+            <a data-toggle="tooltip" data-placement="right" title="Add to cart"
+              ><i class="fa fa-cart-plus fa-2x"></i>
+            </a>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { WishListComponent } from './wishlist.component';
 export class WishList {
   static childRoutes(routes: Routes): Route {
     return {
-      path: '',
+      path: 'wishlist',
       component: WishListComponent,
       children: routes,
       canActivate: [AuthenticationGuard],

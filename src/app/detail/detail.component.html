@@ -2,19 +2,19 @@
 <div>
   <div class="border my-2 p-2">
     <h5 class="text-success text-center">
-      {{ this.service.getProductByLink(link)?.link | replaceStringPipe: '-':' ' | titlecase }}
+      {{ this.foundProduct?.link | replaceStringPipe: '-':' ' | titlecase }}
     </h5>
     <div class="row">
       <div class="col-md-6 p-5">
-        <img class="img-fluid" src="{{ this.service.getProductByLink(link)?.img_url }}" />
-        <h5 class="text-success text-center">Price: {{ this.service.getProductByLink(link)?.price }}</h5>
+        <img class="img-fluid" src="{{ foundProduct?.img_url }}" />
+        <h5 class="text-success text-center">Price: {{ this.foundProduct?.price }}</h5>
         <div class="circle-list">
           <span class="circle" data-toggle="tooltip" title="Add to cart"> <i class="fa fa-shopping-cart"></i></span>
           <span
-            [class]="isActive ? 'circle-active' : 'circle'"
+            [class]="service.isExistedInWishlist(this.foundProduct.id) ? 'circle-active' : 'circle'"
             data-toggle="tooltip"
             title="Add to wishlist"
-            (click)="isActive = !isActive"
+            (click)="toggleWishlistButton()"
           >
             <i class="far fa-heart"></i>
           </span>
@@ -27,8 +27,8 @@
         </div>
       </div>
       <div class="col-md-6 p-5">
-        <h6>{{ this.service.getProductByLink(link)?.dsc }}</h6>
-        <p>{{ this.service.getProductByLink(link)?.full_dsc }}</p>
+        <h6>{{ this.foundProduct?.dsc }}</h6>
+        <p>{{ this.foundProduct?.full_dsc }}</p>
       </div>
     </div>
   </div>

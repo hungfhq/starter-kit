@@ -70,9 +70,32 @@
           <div id="navbar-menu" class="collapse navbar-inverse navbar-collapse float-xs-none">
             <div class="navbar-nav">
               <a class="nav-item nav-link ml-2" [routerLink]="['/shop']"> <i class="fa fa-home"></i> Home </a>
-              <a class="nav-item nav-link ml-2" [routerLink]="['/wishlist']"> <i class="fa fa-star"></i> Wish List </a>
+              <a class="nav-item nav-link ml-2" [routerLink]="['/wishlist']">
+                <i class="fa fa-star"></i> Wish List
+                <span class="text-success" [hidden]="!this.authenticationService.credentials"
+                  >({{ service.getWishlist.length }})</span
+                >
+              </a>
               <a class="nav-item nav-link ml-2"> <i class="fa fa-shopping-cart"></i> Shopping Cart </a>
               <a class="nav-item nav-link ml-2"> <i class="fa fa-check-square"></i> Checkout </a>
+              <div
+                class="nav-item"
+                ngbDropdown
+                placement="bottom-right"
+                [hidden]="!this.authenticationService.credentials"
+              >
+                <a id="wl-dropdown" class="nav-link" ngbDropdownToggle>
+                  <i class="fa fa-address-book"></i> Logout <i class="fa fa-angle-down"></i>
+                </a>
+                <div ngbDropdownMenu aria-labelledby="wl-dropdown">
+                  <h6 class="dropdown-header">
+                    <span>Logged in as</span>
+                    <span class="text-danger">{{ this.authenticationService.credentials?.username }}</span>
+                  </h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+              </div>
             </div>
           </div>
         </nav>
@@ -102,10 +125,10 @@
         </div>
         <div class="header">
           <ul>
-            <li class="cat-item">
+            <li class="cat-item" [hidden]="this.authenticationService.credentials">
               <a [routerLink]="['/login']"><i class="fas fa-angle-right"></i>Login</a>
             </li>
-            <li class="cat-item">
+            <li class="cat-item" [hidden]="this.authenticationService.credentials">
               <a>
                 <i class="fas fa-angle-right"></i>
                 <ngbd-login-modal></ngbd-login-modal>

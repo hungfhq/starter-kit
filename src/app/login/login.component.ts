@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.isLoading = true;
+    // console.log("asds",this.loginForm.value);
     this.authenticationService
       .login(this.loginForm.value)
       .pipe(
