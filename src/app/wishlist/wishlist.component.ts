@@ -16,12 +16,14 @@ export class WishListComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+
   get username(): string | null {
     const credentials = this.authenticationService.credentials;
     return credentials ? credentials.username : null;
   }
 
   logout() {
-    this.authenticationService.logout().subscribe(() => this.router.navigate(['/shop'], { replaceUrl: false }));
+    this.authenticationService.logout().subscribe(() => this.router.navigate(['/shop'], { replaceUrl: true }));
+    console.log('do logout()');
   }
 }

@@ -19,11 +19,7 @@ export class ListComponent implements OnInit {
       this.found = this.service
         .getData()
         .categories.find((data: { link: any }) => this.categoryLink.includes(data.link));
-      // if(this.found.hasOwnProperty('link'))
-      //   this.router.navigate(['/shop', this.found.link])
-      // else
-      //   this.router.navigate(['/shop'])
     });
-    // !this.found ? this.router.navigate(['/pagenotfound']) : this.router.navigate(['/shop', this.found.link]);
+    !this.found ? this.router.navigate(['/pagenotfound']) : this.router.navigate(['/shop', this.found.link]);
   }
 }

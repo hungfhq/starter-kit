@@ -75,15 +75,14 @@
               <a class="nav-item nav-link ml-2"> <i class="fa fa-check-square"></i> Checkout </a>
               <div class="nav-item" ngbDropdown placement="bottom-right">
                 <a id="wl-dropdown" class="nav-link" ngbDropdownToggle>
-                  <i class="fa fa-address-book"></i> My Account
+                  <i class="fa fa-address-book"></i> Logout <i class="fa fa-angle-down"></i>
                 </a>
                 <div ngbDropdownMenu aria-labelledby="wl-dropdown">
                   <h6 class="dropdown-header">
                     <span>Logged in as</span> <b>{{ username }}</b>
                   </h6>
                   <div class="dropdown-divider"></div>
-                  <!-- <button class="dropdown-item" (click)="logout()">Logout</button> -->
-                  <a href="" class="dropdown-item" (click)="logout()">Logout</a>
+                  <a class="dropdown-item" (click)="logout()">Logout</a>
                 </div>
               </div>
             </div>
@@ -103,7 +102,9 @@
       <!-- Account menu-left -->
       <div class="hidden-xs">
         <div class="header heading-left-menu">
-          <p>Hello {{ username }}</p>
+          <p>
+            Hello <span class="text-danger">{{ username }}</span>
+          </p>
         </div>
         <div class="header">
           <ul>
@@ -150,6 +151,7 @@
               product.link
             }}</a>
             <p>{{ product.dsc }}</p>
+            <a><i class="fa fa-trash fa-2x"></i></a>
           </div>
           <div class="col-2">
             <h6 class="text-center text-success">{{ product.price }}</h6>

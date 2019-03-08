@@ -3,13 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { extract } from '@app/core';
 
 import { WishListComponent } from './wishlist.component';
+import { WishList } from './wishlist.service';
 
 const routes: Routes = [
-  {
-    path: 'wishlist',
-    component: WishListComponent,
-    data: { title: extract('Wishlist') }
-  }
+  WishList.childRoutes([
+    {
+      path: 'wishlist',
+      component: WishListComponent,
+      data: { title: extract('Wishlist') }
+    }
+  ])
 ];
 
 @NgModule({
