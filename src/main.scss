@@ -18,3 +18,8 @@
 
 // Custom css
 @import "./custom.scss";
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

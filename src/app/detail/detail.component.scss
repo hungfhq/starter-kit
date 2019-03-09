@@ -42,3 +42,20 @@
     color: #fff;
   }
 }
+.circle-disabled {
+  height: 38px;
+  width: 38px;
+  background-color: #d2d2d2;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 10px;
+  margin-right: 6px;
+  margin-top: 20px;
+  font-size: 1.5em;
+  &:hover {
+    cursor: pointer;
+  }
+  i {
+    color: #fff;
+  }
+}

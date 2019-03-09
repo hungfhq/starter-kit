@@ -11,6 +11,16 @@
         <div class="circle-list">
           <span class="circle" data-toggle="tooltip" title="Add to cart"> <i class="fa fa-shopping-cart"></i></span>
           <span
+            [hidden]="this.authenticationService.credentials"
+            [class]="'circle-disabled'"
+            data-toggle="tooltip"
+            title="Add to wishlist"
+          >
+            <ngbd-login-modal></ngbd-login-modal>
+          </span>
+
+          <span
+            [hidden]="!this.authenticationService.credentials"
             [class]="service.isExistedInWishlist(this.foundProduct.id) ? 'circle-active' : 'circle'"
             data-toggle="tooltip"
             title="Add to wishlist"

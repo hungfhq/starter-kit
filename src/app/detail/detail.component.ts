@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomService } from '../custom.service';
+import { AuthenticationService } from '@app/core/authentication/authentication.service';
 
 import { Logger } from 'app/core/logger.service';
 
@@ -17,7 +18,12 @@ export class DetailComponent implements OnInit {
   category: any;
   brand: any;
 
-  constructor(private route: ActivatedRoute, private router: Router, public service: CustomService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public service: CustomService,
+    public authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(para => {
